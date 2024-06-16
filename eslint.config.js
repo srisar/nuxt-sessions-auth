@@ -1,5 +1,11 @@
-import antfu from '@antfu/eslint-config'
+import antfu from '@antfu/eslint-config';
 
 export default antfu({
-  vue: true,
-})
+   vue: true,
+
+   stylistic: {
+      semi: true,
+      indent: 3,
+      quotes: 'single',
+   },
+});
