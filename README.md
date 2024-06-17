@@ -7,3 +7,13 @@ how to safeguard routes for each role.
 
 Pull and run as typical Nuxt3 project.
 
+Create an `.env` file and add the following
+```
+NUXT_SESSION_SECRET=M5rs/Dipt/TKb5gPRZAOvuaJeeFw8Fb5CYnvFVs6H2WQNadQ1RQB0Q6wpDmy2PBjOjBRkN0TjE33xMO3C3/Bsw==
+```
+
+Without session secret, Nuxt session won't work. Easiest way to create a secure key using `node`
+
+```bash
+node -e "console.log(require('crypto').randomBytes(64).toString('base64'));"
+```
