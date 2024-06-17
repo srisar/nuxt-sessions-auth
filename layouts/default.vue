@@ -3,7 +3,7 @@
 </script>
 
 <template>
-   <div class="p-10">
+   <div class="p-10 container mx-auto">
       <slot />
    </div>
 </template>

@@ -2,6 +2,10 @@
 
 export default defineNuxtConfig({
    devtools: { enabled: true },
-   modules: ['@nuxt/ui'],
+   modules: ['@nuxt/ui', '@pinia/nuxt'],
+
+   runtimeConfig: {
+      sessionSecret: '', // get it from .env file -> NUXT_SESSION_SECRET
+   },
 
 });
