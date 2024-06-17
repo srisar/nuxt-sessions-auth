@@ -6,6 +6,9 @@ export default defineNuxtConfig({
 
    runtimeConfig: {
       sessionSecret: '', // get it from .env file -> NUXT_SESSION_SECRET
+      public: {
+         baseURL: '/',
+      },
    },
 
 });
