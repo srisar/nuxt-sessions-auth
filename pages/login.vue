@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-
 const formFields = reactive({
    email: 'dave@hello.com',
    password: 'password2',
