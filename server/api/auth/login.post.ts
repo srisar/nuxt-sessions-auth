@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
          fullName: foundUser.fullName,
          email: foundUser.email,
          role: foundUser.role,
-         token: 'some-token-here-1212-2121-111',
+         token: 'iCPRdHIubbRSbMCGp5m8KXFU6J21OuIAxfwxD2kW2m4LwrAmQqsO2qCaKaET6GyTYnMau5qKRTGPnm6L76ageQ==',
       },
    });
 
