@@ -5,7 +5,7 @@ export default defineNuxtConfig({
    modules: ['@nuxt/ui', '@pinia/nuxt'],
 
    runtimeConfig: {
-      sessionSecret: '', // get it from .env file -> NUXT_SESSION_SECRET
+      sessionSecret: 'M5rs/Dipt/TKb5gPRZAOvuaJeeFw8Fb5CYnvFVs6H2WQNadQ1RQB0Q6wpDmy2PBjOjBRkN0TjE33xMO3C3/Bsw==', // get it from .env file -> NUXT_SESSION_SECRET
       public: {
          baseURL: '/',
       },
