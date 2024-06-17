@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
+import { useApiFetch } from '~/composables/use-api-fetch';
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -8,30 +9,11 @@ const { isAuthenticated, accessToken } = storeToRefs(authStore);
 
 /* ---------------------------------------------------------------------------------------------- */
 
-const authHeader = computed(() => {
-   return `Bearer ${accessToken.value}`;
-});
-
-const { data, execute, error } = await useFetch('/api/token-check', {
+const { data, execute, error } = await useApiFetch('/api/token-check', {
    method: 'POST',
-   headers: {
-      Authorization: authHeader,
-   },
-   immediate: false,
-   watch: false,
-
-   onResponseError({ response }) {
-      console.log(response.status);
-      if (response.status === 401) {
-         navigateTo('/login');
-      }
-   },
-
 });
 
 async function handleDummyRequest() {
-   console.log('accessToken: ', accessToken.value);
-
    await execute();
 }
 </script>
@@ -44,23 +26,25 @@ async function handleDummyRequest() {
          </h1>
       </header>
 
-      <p class="">
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid deleniti dolores ea
-         eaque, maxime, nam odit pariatur, possimus quae quasi quidem repellat repellendus? Dolor
-         dolorem est facere vel. Libero.
+      <p class="mb-5 text-center">
+         This index page is not protected. It has a dummy api fetch call, which will only work, if
+         there is a valid auth. Otherwise, it will automatically redirect to login page.
       </p>
 
-      <div>{{ accessToken }}</div>
-
       <template v-if="isAuthenticated">
-         <p>Your access token is {{ accessToken }}</p>
+         <div class="bg-green-200 p-2 rounded-xl text-center mx-auto max-w-xl mb-5 break-all">
+            <p>Your access token is </p>
+            <code>
+               {{ accessToken }}
+            </code>
+         </div>
       </template>
 
-      <div class="flex w-full items-center justify-center">
-         <UButton label="Dummy request from here" @click="handleDummyRequest()" />
+      <div class="flex w-full items-center justify-center mb-5">
+         <UButton color="green" label="Make an api request" @click="handleDummyRequest()" />
       </div>
 
-      <div>
+      <div class="max-w-xl bg-amber-50 p-5 mx-auto">
          <pre>{{ data }}</pre>
          <pre>{{ error }}</pre>
       </div>
