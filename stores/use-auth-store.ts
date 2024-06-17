@@ -6,6 +6,8 @@ export const useAuthStore = defineStore(
    () => {
       const user = useCookie<SessionUser | undefined>('session-user');
 
+      const accessToken = useCookie<string>('access-token');
+
       const isAuthenticated = computed(() => {
          return user.value !== undefined;
       });
@@ -41,6 +43,8 @@ export const useAuthStore = defineStore(
                email: sessionUser.email,
                role: sessionUser.role,
             };
+
+            accessToken.value = sessionUser.token || '';
          }
       };
 
@@ -51,6 +55,7 @@ export const useAuthStore = defineStore(
             });
 
             user.value = undefined;
+            accessToken.value = '';
          }
          catch (e) {
             console.log(e);
@@ -75,9 +80,10 @@ export const useAuthStore = defineStore(
 
       return {
          user,
+         accessToken,
+         isAuthenticated,
          isAdmin,
          isCustomer,
-         isAuthenticated,
          login,
          logout,
       };
