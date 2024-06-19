@@ -6,7 +6,11 @@ export const useAuthStore = defineStore(
    () => {
       const user = useCookie<SessionUser | undefined>('session-user');
 
-      const accessToken = useCookie<string>('access-token');
+      const accessToken = useCookie<string>('access-token', {
+         default() {
+            return '';
+         },
+      });
 
       const isAuthenticated = computed(() => {
          return user.value !== undefined;
